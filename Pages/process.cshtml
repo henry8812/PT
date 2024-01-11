@@ -1,0 +1,152 @@
+﻿@page
+@model PTSeleccion.Frontend.Pages.processModel
+@{
+ViewData["Title"] = "Process";
+}
+<!--
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+-->
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+
+        <ul class="list-unstyled components">
+             <li class="">
+                <a href="/" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            home
+                        </span>
+                        <span style="margin-left: 10px;">Home</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="/" data-toggle="collapse" aria-expanded="false" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            dashboard
+                        </span>
+                        <span style="margin-left: 10px;">Pruebas de seleccion</span>
+                    </div>
+
+                </a>
+                
+            </li>
+
+            <li class="">
+                <a href="/applicants" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            person
+                        </span>
+                        <span style="margin-left: 10px;">Aspirantes</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="/selection" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-symbols-outlined">
+                        done_outline
+                        </span>
+                        <span style="margin-left: 10px;">Procesos de seleccion</span>
+                    </div>
+                </a>
+            </li>
+
+            
+            <hr>
+            <li class="">
+                <a href="#" id="logout" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            logout
+                        </span>
+                        <span style="margin-left: 10px;">Logout</span>
+                    </div>
+                </a>
+            </li>
+   
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        
+
+        <div class="container">
+
+            <div class="row" id="jobCatalog">
+                <div class="row" id="sortCatalog"></div>
+                <div class="container" id="catalog">
+                </div>
+                <button type="button" id="botonCrearPrueba" class="btn btn-primary mb-4" data-toggle="modal" data-target="#crearPruebaModal" data-whatever="mdo">
+                    Crear Prueba de Selección
+                </button>
+                
+                <div class="modal fade" id="crearPruebaModal" tabindex="-1" role="dialog" aria-labelledby="crearPruebaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="crearPruebaModalLabel">Crear Prueba de Selección</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="crearPruebaForm">
+                                    <div class="form-group">
+                                        <label for="nombrePrueba" class="col-form-label">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombrePrueba">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcionPrueba" class="col-form-label">Descripción:</label>
+                                        <textarea class="form-control" id="descripcionPrueba" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="startDate" class="col-form-label">Fecha de inicio:</label>
+                                        <input type="date" class="form-control" id="startDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="endDate" class="col-form-label">Fecha de fin:</label>
+                                        <input type="date" class="form-control" id="endDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="languageSelect" class="col-form-label">Seleccionar Idioma:</label>
+                                        <select class="form-control" id="languageSelect">
+                                            @foreach (var language in Model.langs)
+                                            {
+                                                <option value="@language.LanguageId">@language.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" id="guardarBtn">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="~/js/home.js"></script>
+        

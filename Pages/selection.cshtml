@@ -1,0 +1,92 @@
+@page
+@model PTSeleccion.Frontend.Pages.SelectionModel
+@{
+    ViewData["Title"] = "Selection";
+}
+
+
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+
+        <ul class="list-unstyled components">
+            <li class="">
+                <a href="/" class="" style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            home
+                        </span>
+                        <span style="margin-left: 10px;">Home</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="">
+                <a href="/process" data-toggle="collapse" aria-expanded="false" class="" style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            dashboard
+                        </span>
+                        <span style="margin-left: 10px;">Pruebas de seleccion</span>
+                    </div>
+                </a>
+
+            </li>
+
+            <li class="">
+                <a href="/applicants" class="" style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            person
+                        </span>
+                        <span style="margin-left: 10px;">Aspirantes</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="/selection" class="" style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-symbols-outlined">
+                            done_outline
+                        </span>
+                        <span style="margin-left: 10px;">Procesos de seleccion</span>
+                    </div>
+                </a>
+            </li>
+
+            <hr>
+
+            <li class="">
+                <a href="#" id="logout" class="" style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            logout
+                        </span>
+                        <span style="margin-left: 10px;">Logout</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <!-- Page Content  -->
+    <div id="content">
+        <div class="container">
+            <h2>Procesos de Selección</h2>
+            <div id="table"></div>
+            
+        </div>
+
+        <!-- Agrega el script DataTables al final de la página -->
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+
+        </script>
+    </div>
+
+</div>
+<script src="~/js/selection.js"></script>

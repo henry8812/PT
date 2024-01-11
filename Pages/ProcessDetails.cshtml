@@ -1,0 +1,216 @@
+﻿@page "/process/{id:int}"
+@model PTSeleccion.Frontend.Pages.ProcessDetailsModel
+@{
+    ViewData["Title"] = "Process Details";
+}
+
+<script>
+    let processId = @Model.Process.ProcessId; // Asignar el ID del proceso a la variable JavaScript
+</script>
+
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+
+        <ul class="list-unstyled components">
+             <li class="">
+                <a href="/" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            home
+                        </span>
+                        <span style="margin-left: 10px;">Home</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="/process" data-toggle="collapse" aria-expanded="false" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            dashboard
+                        </span>
+                        <span style="margin-left: 10px;">Pruebas de seleccion</span>
+                    </div>
+
+                </a>
+                
+            </li>
+
+            <li class="">
+                <a href="/applicants" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            person
+                        </span>
+                        <span style="margin-left: 10px;">Aspirantes</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="/selection" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-symbols-outlined">
+                        done_outline
+                        </span>
+                        <span style="margin-left: 10px;">Procesos de seleccion</span>
+                    </div>
+                </a>
+            </li>
+            
+            <hr>
+            
+            <li class="">
+                <a href="#" id="logout" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            logout
+                        </span>
+                        <span style="margin-left: 10px;">Logout</span>
+                    </div>
+                </a>
+            </li>
+        
+
+
+
+
+
+
+
+
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        
+
+        <div class="container">
+
+              <div class="row">
+
+        <div class="col-md-3 col-lg-3">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-success">Aspirantes</span>
+                <span class="badge bg-success rounded-pill">@Model.Process.ApplicantProcesses.Count()</span>
+            </h4>
+            <ul class="list-group mb-3">
+                @foreach (var appProcess in Model.Process.ApplicantProcesses)
+                {
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+
+                        @if (appProcess.Applicant != null && appProcess.Applicant.User != null)
+                        {
+                            <div>
+                                <h6 class="my-0">Nombre</h6>
+                                <small class="text-body-secondary">
+                                    @appProcess.Applicant.User.FirstName
+                                    @appProcess.Applicant.User.LastName
+                                </small>
+
+                            </div>
+                        }
+                        else
+                        {
+
+                        }
+                    </li>
+                }
+
+
+            </ul>
+        </div>
+        <div class="col-md-3 col-lg-3 ">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-success">Preguntas</span>
+                <span class="badge bg-success rounded-pill">@Model.Process.Questions.Count()</span>
+            </h4>
+            <ul class="list-group mb-3">
+                @foreach (var appProcess in Model.Process.Questions)
+                {
+                    <li class="list-group-item d-flex justify-content-between lh-sm li-question">
+
+
+                        <div>
+                            <h6 class="my-0">@appProcess.Difficulty</h6>
+                            <small class="text-body-secondary">
+                                @appProcess.Text
+                            </small>
+                            <div class="btn  icon order-md-last"><span class="material-icons md-48">delete</span></div>
+                        </div>
+
+                    </li>
+                }
+
+
+            </ul>
+        </div>
+        <div class="col-md-5 order-md-last">
+            <div class="row">
+                <div class="border mt-4">
+                    <form id="createQuestionsForm">
+                        <div class="form-group">
+                            <label for="question">Texto de la pregunta</label>
+                            <textarea type="text" class="form-control" id="question" name="question"></textarea>
+                        </div>
+                        <!-- Agregar más campos según sea necesario -->
+                    </form>
+                    <button type="button" class="btn btn-success mt-4 mx-auto float-right" id="createQuestionsBtn">Crear
+                        Pregunta</button>
+
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="border mt-4">
+                    <form id="createQuestionsForm">
+                        <div class="form-group">
+                            <label for="document">Documento</label>
+                            <input type="text" class="form-control" id="document">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="question">Email</label>
+                            <input type="text" class="form-control" id="document">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="text" class="form-control" id="phone">
+                        </div>
+
+
+
+                        <!-- Agregar más campos según sea necesario -->
+                    </form>
+                    <button type="button" class="btn btn-success mt-4 mx-auto float-right"
+                        id="createQuestionsBtn">Consultar Usuario
+                    </button>
+                    <button type="button" class="btn btn-success mt-4 mx-auto float-right"
+                        id="createQuestionsBtn">Agregar al proceso de seleccion</button>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+        </div>
+    </div>
+</div>
+        <script src="~/js/process.js"></script>

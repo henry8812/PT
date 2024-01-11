@@ -1,0 +1,222 @@
+﻿@page
+@model PTSeleccion.Frontend.Pages.IndexModel
+@{
+ViewData["Title"] = "Home page";
+}
+<!--
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+-->
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header mx-auto px-auto">
+            <img src="~/img/logo.png" alt="" width="90%">
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            dashboard
+                        </span>
+                        <span style="margin-left: 10px;">Home</span>
+                    </div>
+
+                </a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#" class=""
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            search
+                        </span>
+                        <span style="margin-left: 10px;">Search</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="#" class=""
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            work
+                        </span>
+                        <span style="margin-left: 10px;">Jobs</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="#" class=""
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            pending
+                        </span>
+                        <span style="margin-left: 10px;">Postulations</span>
+                    </div>
+                </a>
+            </li>
+            <hr>
+            <li class="">
+                <a href="#" class=""
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            help
+                        </span>
+                        <span style="margin-left: 10px;">Help Center</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a href="#" class=""
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            settings
+                        </span>
+                        <span style="margin-left: 10px;">Settings</span>
+                    </div>
+                </a>
+            </li>
+
+
+
+
+
+
+
+
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span><- Toggle Sidebar</span>
+                </button>
+
+                <form class="d-flex px-2  " role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                @{
+                bool mostrarElemento = true; // tu condición booleana aquí
+                bool notifications = true;
+                }
+
+                <a href="">
+                    @if (!notifications)
+                    {
+                    <span class="material-icons">
+                        notifications
+                    </span>
+                    }
+                    else
+                    {
+                    <span class="material-icons">
+                        notifications_active
+                    </span>
+                    }
+                </a>
+                @if (!mostrarElemento)
+                {
+                <a href="/logout" class="btn btn-success ml-1">LOGOUT</a>
+                }
+                else
+                {
+                <a href="/login" class="btn btn-primary ml-1">LOGIN</a>
+                }
+
+
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="row" id="jobCatalog">
+                <div class="row" id="sortCatalog"></div>
+                <div class="container" id="catalog">
+                </div>
+                <button type="button" id="botonCrearPrueba" class="btn btn-primary" data-toggle="modal" data-target="#crearPruebaModal" data-whatever="mdo">
+                    Crear Prueba de Selección
+                </button>
+                
+                <div class="modal fade" id="crearPruebaModal" tabindex="-1" role="dialog" aria-labelledby="crearPruebaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="crearPruebaModalLabel">Crear Prueba de Selección</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="crearPruebaForm">
+                                    <div class="form-group">
+                                        <label for="nombrePrueba" class="col-form-label">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombrePrueba">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcionPrueba" class="col-form-label">Descripción:</label>
+                                        <textarea class="form-control" id="descripcionPrueba" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="startDate" class="col-form-label">Fecha de inicio:</label>
+                                        <input type="date" class="form-control" id="startDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="endDate" class="col-form-label">Fecha de fin:</label>
+                                        <input type="date" class="form-control" id="endDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="languageSelect" class="col-form-label">Seleccionar Idioma:</label>
+                                        <select class="form-control" id="languageSelect">
+                                            @foreach (var language in Model.langs)
+                                            {
+                                                <option value="@language.LanguageId">@language.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" id="guardarBtn">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/home.js"></script>

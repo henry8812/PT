@@ -1,0 +1,90 @@
+
+@page
+@model PTSeleccion.Frontend.Pages.ApplicantsModel
+@{
+ViewData["Title"] = "Applicants";
+}
+
+
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+
+        <ul class="list-unstyled components">
+             <li class="">
+                <a href="/" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            home
+                        </span>
+                        <span style="margin-left: 10px;">Home</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="">
+                <a href="/process" data-toggle="collapse" aria-expanded="false" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            dashboard
+                        </span>
+                        <span style="margin-left: 10px;">Pruebas de seleccion</span>
+                    </div>
+                </a>
+                
+            </li>
+
+            <li class="active">
+                <a href="/applicants" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            person
+                        </span>
+                        <span style="margin-left: 10px;">Aspirantes</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="">
+                <a href="/selection" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-symbols-outlined">
+                        done_outline
+                        </span>
+                        <span style="margin-left: 10px;">Procesos de seleccion</span>
+                    </div>
+                </a>
+            </li>
+            
+            <hr>
+            
+            <li class="">
+                <a href="#" id="logout" class=""
+                    style="">
+                    <div style="display: flex; align-items: center;">
+                        <span class="material-icons">
+                            logout
+                        </span>
+                        <span style="margin-left: 10px;">Logout</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <div class="container">
+            <div id="catalogApplicants"></div>
+           
+        </div>
+    </div>
+</div>
+        <script src="~/js/applicants.js"></script>

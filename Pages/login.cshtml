@@ -1,0 +1,32 @@
+﻿@page
+@model PTSeleccion.Frontend.Pages.LoginPage
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    
+
+    <!-- Page Content  -->
+    <div id="content">
+        <div class="content">
+            <h1>Login</h1>
+
+            <form id="loginForm" action="post">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" asp-for="Username" />
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" asp-for="Password" />
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
