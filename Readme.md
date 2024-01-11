@@ -49,7 +49,13 @@ En /Backend/Models seencontraran los siguientes modelos:
 ### Crear Datos Semilla
 - 10 aspirantes 
 - 15 pruebas de selección (Diferentes tipos y niveles) con sus respectivas preguntas
-Los datos anteriores se encontraran en un archivo DDL.sql en la raiz del proyecto
+Los datos anteriores se encontraran en un archivo DDL.sql en la raiz del proyecto junto con el PT01.bak
+Para las pruebas si se usa el respaldo
+{
+    "username" : "adminadmin",
+    "password" : "Admin123+"
+}
+
 
 ## Back-End
 - Construir API's RESTful que implementen los servicios CRUD de la aplicación (Aspirantes y Pruebas de Selección).
@@ -83,3 +89,5 @@ Se construyo la intefaz para la visualizacion de las pruebas de seleccion, y ade
 No se implemento, no era claro el tema de la generacion de que tipo de archivo se necesitaba generar.
 ```
 
+Se implemento el frontend con peticiones XHR para llamar las API Rest expuestas en el backend, ademas se uso handlebars para renderizar algunas pantallas del frontend.
+Se uso Bootstrap como framework css 
