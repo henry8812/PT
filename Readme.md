@@ -30,21 +30,21 @@ Se construyeron diferentes modelos para este proyecto, los principales solicitad
 - Preguntas que componen la prueba
 
 En /Backend/Models seencontraran los siguientes modelos:
-Answer.cs               --  Creada con la finalidad de almacenar las respuestas de los aspirantes, sin uso debido a que esto no esta descrito en las funcionalidades
-Applicant.cs            --  Este modelo es el que corresponde al aspirante
-ApplicantProcess.cs     --  Este modelo representa el proceso de seleccion de un aspirante, en este se puede ver el estado, el resultado entre otros atributos 
-Category.cs             --  Este modelo podria representar la categoria de los procesos de seleccion, dado que no hay una funcionalidad relacionda en la prueba solo esta definido, no tiene uso
-Language.cs             --  Este modelo representa los lenguajes de programacion, este esta relacionado a las pruebas de seleccion
-Level.cs                --  Este modelo representa el nivel de las pruebas de seleccion 
-Location.cs             --  Este modelo podria represnetar la ubicacion de la oferta laboral, actualmente sin uso
-Option.cs               --  Este modelo podria represnetar las opciones de respuesta para las preguntas que podrian llegar a ser de seleccion con opciones
-Process.cs              --  Este modelo representa las pruebas de seleccion
-Question.cs             --  Este modelo representa las preguntas
-QuestionType.cs         --  Este modelo podria representar los tipos de preguntas, actualmente sin uso.
-Role.cs                 --  Este modelo representa los roles, hereda de identityRole
-Status.cs               --  Este modelo representa los diferentes estados de los procesos de seleccion de los aspirantes.
-TestType.cs             --  Este modelo representa los tipo de prueba de seleccion tecnica o practica, podria haber mas tipos por eso se creo una tabla
-User.cs                 --  Este modelo representa los usuarios, hereda de identityUser
+- Answer.cs               --  Creada con la finalidad de almacenar las respuestas de los aspirantes, sin uso debido a que esto no esta descrito en las funcionalidades
+- Applicant.cs            --  Este modelo es el que corresponde al aspirante
+- ApplicantProcess.cs     --  Este modelo representa el proceso de seleccion de un aspirante, en este se puede ver el estado, el resultado entre otros atributos 
+- Category.cs             --  Este modelo podria representar la categoria de los procesos de seleccion, dado que no hay una funcionalidad relacionda en la prueba solo esta definido, no tiene uso
+- Language.cs             --  Este modelo representa los lenguajes de programacion, este esta relacionado a las pruebas de seleccion
+- Level.cs                --  Este modelo representa el nivel de las pruebas de seleccion 
+- Location.cs             --  Este modelo podria represnetar la ubicacion de la oferta laboral, actualmente sin uso
+- Option.cs               --  Este modelo podria represnetar las opciones de respuesta para las preguntas que podrian llegar a ser de seleccion con opciones
+- Process.cs              --  Este modelo representa las pruebas de seleccion
+- Question.cs             --  Este modelo representa las preguntas
+- QuestionType.cs         --  Este modelo podria representar los tipos de preguntas, actualmente sin uso.
+- Role.cs                 --  Este modelo representa los roles, hereda de identityRole
+- Status.cs               --  Este modelo representa los diferentes estados de los procesos de seleccion de los aspirantes.
+- TestType.cs             --  Este modelo representa los tipo de prueba de seleccion tecnica o practica, podria haber mas tipos por eso se creo una tabla
+- User.cs                 --  Este modelo representa los usuarios, hereda de identityUser
 
 ### Crear Datos Semilla
 - 10 aspirantes 
