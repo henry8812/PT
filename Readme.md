@@ -11,7 +11,7 @@ Con el presente repositorio hago entrega de la prueba tecnica de .NET, teniendo 
 ## Modelo de Datos
 
 Se construyeron diferentes modelos para este proyecto, los principales solicitados en la prueba son los siguientes:
-
+asdasd
 ### Aspirante
 - Datos básicos
 - Datos de contacto
