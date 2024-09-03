@@ -15,16 +15,21 @@ jobs:
       - name: Set up GitHub CLI with GITHUB_TOKEN
         run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
 
-      - name: Get labels from the merged PR
-        id: get_labels
+      - name: Get PR number from event
+        id: get_pr_number
         run: |
-          PR_NUMBER=$(gh pr list --state closed --json number --jq 'map(select(.mergeCommit == "${{ github.sha }}")) | .[0].number')
+          PR_NUMBER=${{ github.event.pull_request.number }}
           if [ -z "$PR_NUMBER" ]; then
-            echo "No associated PR found for the merge commit."
+            echo "No associated PR found."
             exit 1
           fi
-          LABELS=$(gh pr view $PR_NUMBER --json labels --jq '.labels[].name')
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+
+      - name: Get labels from the PR
+        id: get_labels
+        run: |
+          LABELS=$(gh pr view ${{ env.PR_NUMBER }} --json labels --jq '.labels[].name')
+          echo "PR_NUMBER=${{ env.PR_NUMBER }}" >> $GITHUB_ENV
           echo "LABELS=$LABELS" >> $GITHUB_ENV
 
       - name: Print PR labels
