@@ -1,0 +1,43 @@
+name: Validate PR Labels
+
+on:
+  pull_request:
+    types: [closed]  # Ejecuta este pipeline cuando un PR se cierre (se haya hecho merge)
+
+jobs:
+  validate_labels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up GitHub CLI with GITHUB_TOKEN
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Get labels from the merged PR
+        id: get_labels
+        run: |
+          PR_NUMBER=$(gh pr list --state closed --json number --jq 'map(select(.mergeCommit == "${{ github.sha }}")) | .[0].number')
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No associated PR found for the merge commit."
+            exit 1
+          fi
+          LABELS=$(gh pr view $PR_NUMBER --json labels --jq '.labels[].name')
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+          echo "LABELS=$LABELS" >> $GITHUB_ENV
+
+      - name: Print PR labels
+        run: |
+          echo "PR Number: ${{ env.PR_NUMBER }}"
+          echo "PR Labels: ${{ env.LABELS }}"
+
+      - name: Conditional check on labels
+        run: |
+          if echo "${{ env.LABELS }}" | grep -q "deploy-to-staging"; then
+            echo "Label 'deploy-to-staging' found!"
+          elif echo "${{ env.LABELS }}" | grep -q "deploy-to-rhel-prod"; then
+            echo "Label 'deploy-to-rhel-prod' found!"
+          else
+            echo "No relevant deployment label found."
+          fi
